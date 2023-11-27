@@ -208,7 +208,102 @@ public class ASA implements Parser{
                 CASOS DEL 20 AL 26: TANIA
                 -------------------------------------------------------------------
                 */
-                
+                case "20":
+                    if(preanalisis.tipo.name()=="FROM"){
+                            stack.push("FROM");
+                            stack.push("24");
+                            x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="COMA"){
+                            stack.push("COMA");
+                            stack.push("24");
+                            x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' o 'from' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "21":
+                    if(preanalisis.tipo.name()=="IDENTIFICADOR"){
+                        stack.push("IDENTIFICADOR");
+                        stack.push("23");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'id' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    i++;
+                    preanalisis=this.tokens.get(i);
+                    break;
+
+                case "23":
+                    if(preanalisis.tipo.name()=="FROM"){
+                            stack.push("FROM");
+                            stack.push("20");
+                            x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="COMA"){
+                            stack.push("COMA");
+                            stack.push("20");
+                            x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' o 'from' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "24":
+                    if(preanalisis.tipo.name()=="FROM"){
+                            stack.push("FROM");
+                            stack.push("16");
+                            x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="COMA"){
+                            stack.push("COMA");
+                            stack.push("16");
+                            x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' o 'from' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "25":
+                    stack.pop();
+                    stack.pop();
+                    if(preanalisis.tipo.name()=="FROM"){
+                            stack.push("FROM");
+                            stack.push("15");
+                            x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'from' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "26":
+                    if(preanalisis.tipo.name()=="FROM"){
+                            stack.push("FROM");
+                            stack.push("4");
+                            x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'from' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
                 
                 default:
                     System.out.println("Se han encontrado errores");
