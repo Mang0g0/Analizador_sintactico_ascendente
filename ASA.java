@@ -199,10 +199,186 @@ public class ASA implements Parser{
                     break;
                 /*
                 -------------------------------------------------------------------
-                CASOS DEL 11 AL 20: RAUL
+                CASOS DEL 11 AL 19: RAUL
                 -------------------------------------------------------------------
                 */
-                
+                case "11":
+                    stack.pop();
+                    stack.pop();
+                    if(preanalisis.tipo.name()=="COMA"){
+                        stack.push("COMA");
+                        stack.push("12");
+                        x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="EOF"){
+                        stack.push("EOF");
+                        stack.push("12");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "12":
+                    stack.pop();
+                    stack.pop();
+                    if(preanalisis.tipo.name()=="COMA"){
+                        stack.push("COMA");
+                        stack.push("6");
+                        x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="EOF"){
+                        stack.push("EOF");
+                        stack.push("6");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "13":
+                    stack.pop();
+                    stack.pop();
+                    if(preanalisis.tipo.name()=="COMA"){
+                        stack.push("COMA");
+                        stack.push("6");
+                        x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="EOF"){
+                        stack.push("EOF");
+                        stack.push("6");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "14":
+                    if(preanalisis.tipo.name()=="ASTERISCO"){
+                        stack.push("ASTERISCO");
+                        stack.push("25");
+                        x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="IDENTIFICADOR"){
+                        stack.push("IDENTIFICADOR");
+                        stack.push("19");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'id' o 'asterisco' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    i++;
+                    preanalisis=this.tokens.get(i);
+                    break;
+
+                case "15":
+                    stack.pop();
+                    stack.pop();
+                    if(preanalisis.tipo.name()=="FROM"){
+                        stack.push("FROM");
+                        stack.push("4");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'from' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "16":
+                    if(preanalisis.tipo.name()=="COMA"){
+                        stack.push("COMA");
+                        stack.push("17");
+                        x=stack.peek();
+                        i++;
+                        preanalisis=this.tokens.get(i);
+                    }
+                    else if(preanalisis.tipo.name()=="FROM"){
+                        stack.push("FROM");
+                        stack.push("15");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+
+                    break;
+
+                case "17":
+                    if(preanalisis.tipo.name()=="IDENTIFICADOR"){
+                        stack.push("IDENTIFICADOR");
+                        stack.push("19");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'id' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    i++;
+                    preanalisis=this.tokens.get(i);
+                    break;
+
+                case "18":
+                    if(preanalisis.tipo.name()=="FROM"){
+                        stack.push("FROM");
+                        stack.push("16");
+                        x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="COMA"){
+                        stack.push("COMA");
+                        stack.push("16");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'coma' o 'from' esperados");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
+
+                case "19":
+                    if(preanalisis.tipo.name()=="PUNTO"){
+                        stack.push("PUNTO");
+                        stack.push("21");
+                        x=stack.peek();
+                        i++;
+                        preanalisis=this.tokens.get(i);
+                    }
+                    else if(preanalisis.tipo.name()=="FROM"){
+                        stack.pop();
+                        stack.pop();
+                        stack.push("FROM");
+                        stack.push("20");
+                        x=stack.peek();
+                    }
+                    else if(preanalisis.tipo.name()=="COMA"){
+                        stack.pop();
+                        stack.pop();
+                        stack.push("COMA");
+                        stack.push("20");
+                        x=stack.peek();
+                    }
+                    else{
+                        System.out.println("Error: 'punto' esperado");
+                        hayErrores=true;
+                        re=false;
+                    }
+                    break;
                 /*
                 -------------------------------------------------------------------
                 CASOS DEL 20 AL 26: TANIA
